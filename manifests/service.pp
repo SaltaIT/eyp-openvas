@@ -19,6 +19,16 @@ class openvas::service inherits openvas {
         ensure => $openvas::service_ensure,
         enable => $openvas::service_enable,
       }
+
+      # ERROR: No OpenVAS Manager database found. (Tried: /var/lib/openvas/mgr/tasks.db)
+      # FIX: Run 'openvasmd --rebuild' while OpenVAS Scanner is running.
+      exec { 'OpenVAS Manager database':
+        command => 'openvasmd --rebuild',
+        creates => '/var/lib/openvas/mgr/tasks.db',
+        path    => '/bin:/sbin:/usr/bin:/usr/sbin',
+        require => Service[$openvas::params::service_name],
+      }
+
     }
   }
 }
