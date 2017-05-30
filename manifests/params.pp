@@ -1,7 +1,7 @@
 class openvas::params {
 
   $package_name='openvas'
-  $service_name='openvas'
+  $service_name='openvas-scanner'
 
   case $::osfamily
   {
