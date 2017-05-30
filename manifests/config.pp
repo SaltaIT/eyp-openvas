@@ -15,6 +15,7 @@ class openvas::config inherits openvas {
   # /var/lib/openvas/plugins/md5sums
   exec { 'greenbone-nvt-sync initial update':
     command => 'greenbone-nvt-sync',
+    timeout => 0,
     creates => "${openvas::plugins_folder}/md5sums",
   }
 
@@ -25,6 +26,14 @@ class openvas::config inherits openvas {
   exec { 'admin user openvas':
     command => "bash -c 'openvasmd --create-user=${openvas::admin_user} --role=Admin && openvasmd --user=${openvas::admin_user} --new-password=${openvas::admin_password}'",
     unless  => 'openvasmd --get-users | grep -E "\\b${openvas::admin_user}\\b"'
+  }
+
+  # ERROR: No OpenVAS SCAP database found. (Tried: /var/lib/openvas/scap-data/scap.db)
+  # FIX: Run a SCAP synchronization script like greenbone-scapdata-sync.
+  exec { 'greenbone-scapdata-sync initial update':
+    command => 'greenbone-scapdata-sync',
+    timeout => 0,
+    creates => '/var/lib/openvas/scap-data/scap.db',
   }
 
 
