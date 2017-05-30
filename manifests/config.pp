@@ -12,6 +12,7 @@ class openvas::config inherits openvas {
   exec { 'greenbone-nvt-sync initial update':
     command => 'greenbone-nvt-sync',
     creates => "${openvas::plugins_folder}/md5sums",
+    path    => '/bin:/sbin:/usr/bin:/usr/sbin',
   }
 
 }
