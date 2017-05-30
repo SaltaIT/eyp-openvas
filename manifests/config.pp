@@ -8,4 +8,10 @@ class openvas::config inherits openvas {
     content => template("${module_name}/openvassd.erb"),
   }
 
+  # /var/lib/openvas/plugins/md5sums
+  exec { 'greenbone-nvt-sync initial update':
+    command => 'greenbone-nvt-sync',
+    creates => "${openvas::plugins_folder}/md5sums",
+  }
+
 }
