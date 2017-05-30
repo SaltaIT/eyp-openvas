@@ -26,6 +26,7 @@ class openvas::service inherits openvas {
         command => 'openvasmd --rebuild',
         creates => '/var/lib/openvas/mgr/tasks.db',
         path    => '/bin:/sbin:/usr/bin:/usr/sbin',
+        timeout => 0,
         require => Service[$openvas::params::service_name],
       }
 
