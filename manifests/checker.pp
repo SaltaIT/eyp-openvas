@@ -17,4 +17,5 @@ class openvas::checker(
     mode    => '0755',
     source  => "puppet:///modules/${module_name}/openvas-checker",
     require => Exec["mkdir p openvaschecker ${basedir}"],
+  }
 }
