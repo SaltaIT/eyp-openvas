@@ -1,7 +1,8 @@
 class openvas::params {
 
-  $package_name='openvas'
-  $service_name='openvas-scanner'
+  $package_name=[ 'openvas', 'gnutls-utils' ]
+  $scanner_service_name='openvas-scanner'
+  $manager_service_name='openvas-manager'
 
   case $::osfamily
   {

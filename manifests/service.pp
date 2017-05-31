@@ -15,10 +15,21 @@ class openvas::service inherits openvas {
   {
     if($openvas::manage_service)
     {
-      service { $openvas::params::service_name:
+      service { $openvas::params::scanner_service_name:
         ensure => $openvas::service_ensure,
         enable => $openvas::service_enable,
       }
+
+      service { $openvas::params::manager_service_name:
+        ensure => $openvas::service_ensure,
+        enable => $openvas::service_enable,
+      }
+
+      # ERROR: OpenVAS Manager is NOT running!
+      # FIX: Start OpenVAS Manager (openvasmd).
+      # ERROR: Greenbone Security Assistant is NOT running!
+      # FIX: Start Greenbone Security Assistant (gsad).
+
 
       # ERROR: No OpenVAS Manager database found. (Tried: /var/lib/openvas/mgr/tasks.db)
       # FIX: Run 'openvasmd --rebuild' while OpenVAS Scanner is running.
