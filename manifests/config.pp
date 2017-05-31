@@ -9,7 +9,7 @@ class openvas::config inherits openvas {
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    content => template("${module_name}/gsaconf.erb"),
+    content => template("${module_name}/gsadconf.erb"),
   }
 
   file { '/etc/openvas/openvassd.conf':
