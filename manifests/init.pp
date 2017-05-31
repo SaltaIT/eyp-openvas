@@ -10,6 +10,7 @@ class openvas (
                 $admin_password        = 'dmlzY2EgY2F0YWx1bnlhCg',
                 $gsa_address           = '0.0.0.0',
                 $gsa_port              = '9392',
+                $enable_pwpolicy       = true,
               ) inherits openvas::params{
 
   validate_re($package_ensure, [ '^present$', '^installed$', '^absent$', '^purged$', '^held$', '^latest$' ], 'Not a supported package_ensure: present/absent/purged/held/latest')

@@ -4,6 +4,14 @@ class openvas::config inherits openvas {
     path => '/bin:/sbin:/usr/bin:/usr/sbin',
   }
 
+  file { '/etc/openvas/pwpolicy.conf':
+    ensure  => 'present',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    content => template("${module_name}/pwpolicy.erb"),
+  }
+
   file { '/etc/sysconfig/gsad':
     ensure  => 'present',
     owner   => 'root',
@@ -63,8 +71,4 @@ class openvas::config inherits openvas {
     timeout => 0,
     unless  => 'openvas-manage-certs -V',
   }
-
-
-
-
 }
