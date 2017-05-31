@@ -1,6 +1,6 @@
 class openvas::params {
 
-  $package_name=[ 'openvas', 'gnutls-utils' ]
+  $package_name=[ 'openvas', 'gnutls-utils', 'texlive-texconfig' ]
   $scanner_service_name='openvas-scanner'
   $manager_service_name='openvas-manager'
   $gsad_service_name='gsad'
