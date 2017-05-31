@@ -36,5 +36,14 @@ class openvas::config inherits openvas {
     creates => '/var/lib/openvas/scap-data/scap.db',
   }
 
+  # ERROR: No OpenVAS CERT database found. (Tried: /var/lib/openvas/cert-data/cert.db)
+  # FIX: Run a CERT synchronization script like greenbone-certdata-sync.
+  exec { 'greenbone-certdata-sync initial update':
+    command => 'greenbone-certdata-sync',
+    timeout => 0,
+    creates => '/var/lib/openvas/cert-data/cert.db',
+  }
+
+
 
 }
