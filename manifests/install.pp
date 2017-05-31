@@ -20,9 +20,12 @@ class openvas::install inherits openvas {
       require => [ Class['::art'], Redis::Instance['openvas'] ],
     }
 
-    package { $openvas::params::latex_packages:
-      ensure => $openvas::package_ensure,
-      require => [ Class['::art'], Redis::Instance['openvas'] ],
+    if($openvas::install_latex_packages)
+    {
+      package { $openvas::params::latex_packages:
+        ensure => $openvas::package_ensure,
+        require => [ Class['::art'], Redis::Instance['openvas'] ],
+      }  
     }
   }
 
