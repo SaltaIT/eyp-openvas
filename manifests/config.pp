@@ -44,6 +44,19 @@ class openvas::config inherits openvas {
     creates => '/var/lib/openvas/cert-data/cert.db',
   }
 
+  # ERROR: Your OpenVAS certificate infrastructure did NOT pass validation.
+  # FIX: Run 'openvas-manage-certs -a'.
+  #
+  # [root@centos7 logs]# openvas-manage-certs -V; echo $?
+  # ERROR: certtool binary not found!
+  # 1
+  exec { 'OpenVAS certificate infrastructure':
+    command => 'openvas-manage-certs -a',
+    timeout => 0,
+    unless  => 'openvas-manage-certs -V',
+  }
+
+
 
 
 }
