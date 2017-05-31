@@ -4,6 +4,14 @@ class openvas::config inherits openvas {
     path => '/bin:/sbin:/usr/bin:/usr/sbin',
   }
 
+  file { '/etc/sysconfig/gsad':
+    ensure  => 'present',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    content => template("${module_name}/openvassd.erb"),
+  }
+
   file { '/etc/openvas/openvassd.conf':
     ensure  => 'present',
     owner   => 'root',
