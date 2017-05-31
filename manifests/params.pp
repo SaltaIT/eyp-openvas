@@ -1,7 +1,7 @@
 class openvas::params {
 
   $package_name=[ 'openvas', 'gnutls-utils' ]
-  $latex_packages = [ 'texlive-texconfig', 'texlive-metafont-bin', 'TeXmacs', 'texlive-cm' ]
+  $latex_packages = [ 'texlive-texconfig', 'texlive-metafont-bin', 'TeXmacs', 'texlive-cm', 'texlive-comment' ]
   $scanner_service_name='openvas-scanner'
   $manager_service_name='openvas-manager'
   $gsad_service_name='gsad'
