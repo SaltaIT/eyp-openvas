@@ -42,7 +42,7 @@ class openvas::service inherits openvas {
         creates => '/var/lib/openvas/mgr/tasks.db',
         path    => '/bin:/sbin:/usr/bin:/usr/sbin',
         timeout => 0,
-        require => Service[$openvas::params::service_name],
+        require => Service[$openvas::params::scanner_service_name],
       }
 
     }
