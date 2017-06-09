@@ -11,7 +11,7 @@ class openvas::install inherits openvas {
   redis::instance { 'openvas':
     unixsocket => '/tmp/redis.sock',
     listen_tcp => false,
-    notify     => Service['::openvas::service'],
+    notify     => Class['::openvas::service'],
   }
 
   if($openvas::manage_package)
