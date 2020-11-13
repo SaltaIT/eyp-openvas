@@ -1,6 +1,6 @@
 {
   "name": "eyp-openvas",
-  "version": "0.1.1",
+  "version": "1.0.1",
   "author": "Jordi Prats",
   "summary": "Open Vulnerability Assessment Scanner",
   "license": "Apache-2.0",
